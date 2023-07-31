@@ -1,10 +1,17 @@
-cd app
+#!/bin/bash
+APP_NAME=DRFproject
+
 #git pull
 echo "git pull"
-git pull https://github.com/bainaryho/DRFproject.git
+git pull
 #source
 echo "venv 실행"
-source venv/bin/activate
+# source
+if [ -d "venv/Scripts" ]; then
+  source venv/Scripts/activate
+else
+  source venv/bin/activate
+fi
 #runserver
 echo "runserver"
-python manage.py runserver
+python $APP_NAME/manage.py runserver 0.0.0.0:8000
