@@ -35,14 +35,22 @@ server {
 
         location / {
                 proxy_pass http://127.0.0.1:8000;
-                proxy_set_header Host \$host;
-                proxy_set_header X-Real-IP \$remote_addr;
+                proxy_set_header Host \\\$host;
+                proxy_set_header X-Real-IP \\\$remote_addr;
         }
 }
 EOF'
 
 echo "심볼릭링크 생성"
-sudo ln -s /etc/nginx/sites-available/django /etc/nginx/sites-enabled/
+
+TARGET_CONF=/etc/nginx/sites-enabled/
+
+if [ -e $TARGET_CONF ]; then
+    echo "remove symblink"
+    sudo rm $TARGET_CONF
+fi
+
+sudo ln -s /etc/nginx/sites-available/django $TARGET_CONF
 
 echo "엔진엑스 재시작"
 sudo systemctl restart nginx
