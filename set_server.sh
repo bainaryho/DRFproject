@@ -21,8 +21,7 @@ while getopts "i:" option; do
 done
 
 if [ -z $SERVER_IP ]; then
-    echo $MANUAL
-    exit 1
+    SERVER_IP=$(curl ifconfig.me)
 fi
 
 echo "엔진엑스 설치"
