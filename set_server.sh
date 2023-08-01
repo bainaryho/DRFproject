@@ -27,19 +27,19 @@ fi
 echo "엔진엑스 설치"
 sudo apt install -y nginx
 
-echo "nginx.conf 생성"
-sudo sh -c 'cat > /etc/nginx/sites-available/django <<EOF
+echo "nginx conf 생성"
+sudo sh -c "cat > /etc/nginx/sites-available/django <<EOF
 server {
-        listen 80;
-        server_name $SERVER_IP;
+    listen 80;
+    server_name $SERVER_IP;
 
-        location / {
-                proxy_pass http://127.0.0.1:8000;
-                proxy_set_header Host \\\$host;
-                proxy_set_header X-Real-IP \\\$remote_addr;
-        }
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header host \\\$host;
+        proxy_set_header X-Real-IP \\\$remote_addr;
+    }
 }
-EOF'
+EOF"
 
 echo "심볼릭링크 생성"
 
