@@ -26,8 +26,9 @@ SECRET_KEY = 'django-insecure-qp)t*&lual==d8((_$3$v)rd4uq1u=5ewmxp)-fo&mnmig&@8f
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "175.45.200.7",
-    
+    "localhost",
+    "127.0.0.1",
+    "110.165.18.154",
 ]
 
 
@@ -120,6 +121,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = '/var/www/html/static' #여기에 파일들을 모아놓는 방법은
+#python manage.py collectstatic
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

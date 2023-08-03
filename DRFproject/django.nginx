@@ -1,9 +1,9 @@
 server {
 	listen 80;
-	server_name 175.45.200.172;
+	server_name localhost;
 	
 	location / {
-		proxy_pass http://127.0.0.1:8000;
+		proxy_pass http://DRFproject:8000;
 		proxy_set_header Host $host;
 		proxy_set_header X-Real-IP $remote_addr;
 	}

@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  DRFproject:
+    # django app
+    container_name: DRFproject-dc
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: lion-app
+    ports:
+     - "8000:8000"
+
+  nginx:
+    container_name: lion-nginx-dc
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx_ubt
+    image: lion-nginx
+    ports:
+     - "8888:80"
+    # nginx
